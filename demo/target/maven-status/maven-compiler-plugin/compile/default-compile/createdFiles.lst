@@ -1,0 +1,6 @@
+com/portalconcursos/demo/dto/AprovadoRequest.class
+com/portalconcursos/demo/controllers/AprovadoController.class
+com/portalconcursos/demo/FormularioApplication.class
+com/portalconcursos/demo/config/FirebaseConfig.class
+com/portalconcursos/demo/test/TesteController.class
+com/portalconcursos/demo/dto/AprovadoResponse.class

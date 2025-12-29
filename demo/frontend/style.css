@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2f7, #f9fafb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+h1, h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #1f2937;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+input {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background: #6366f1;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+hr {
+    margin: 30px 0;
+    border: none;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+#lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+.card strong {
+    color: #374151;
+}
+
+@media (max-width: 600px) {
+    .container {
+        border-radius: 0;
+        height: 100vh;
+        max-width: 100%;
+    }
+}
