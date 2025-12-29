@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/aprovados";
+const API_URL = "https://formulario-concurso.onrender.com/aprovados";
 
 document.getElementById("formAprovado").addEventListener("submit", cadastrarAprovado);
 

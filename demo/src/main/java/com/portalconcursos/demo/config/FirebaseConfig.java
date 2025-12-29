@@ -18,36 +18,25 @@ public class FirebaseConfig {
 
     @PostConstruct
     public void init() throws IOException {
-        if (FirebaseApp.getApps().isEmpty()) {
 
-            InputStream serviceAccount = null;
-
-            String firebaseConfig = System.getenv("FIREBASE_CONFIG");
-            if (firebaseConfig != null && !firebaseConfig.isBlank()) {
-                serviceAccount = new ByteArrayInputStream(firebaseConfig.getBytes(StandardCharsets.UTF_8));
-            } else {
-                String path = System.getenv("FIREBASE_CONFIG_PATH");
-                if (path != null && !path.isBlank()) {
-                    serviceAccount = new FileInputStream(path);
-                } else {
-                    ClassPathResource resource = new ClassPathResource("firebase-key.json");
-                    if (resource.exists()) {
-                        serviceAccount = resource.getInputStream();
-                    }
-                }
-            }
-
-            if (serviceAccount == null) {
-                throw new IllegalStateException("Missing Firebase credentials: set FIREBASE_CONFIG (JSON), FIREBASE_CONFIG_PATH, or add firebase-key.json to resources.");
-            }
-
-            try (InputStream is = serviceAccount) {
-                FirebaseOptions options = FirebaseOptions.builder()
-                        .setCredentials(GoogleCredentials.fromStream(is))
-                        .build();
-
-                FirebaseApp.initializeApp(options);
-            }
+        if (!FirebaseApp.getApps().isEmpty()) {
+            return;
         }
+
+        String firebaseConfig = System.getenv("FIREBASE_CONFIG");
+
+        if (firebaseConfig == null || firebaseConfig.isBlank()) {
+            throw new RuntimeException("Variável FIREBASE_CONFIG não encontrada");
+        }
+
+        FirebaseOptions options = FirebaseOptions.builder()
+                .setCredentials(
+                        GoogleCredentials.fromStream(
+                                new ByteArrayInputStream(firebaseConfig.getBytes())
+                        )
+                )
+                .build();
+
+        FirebaseApp.initializeApp(options);
     }
 }
